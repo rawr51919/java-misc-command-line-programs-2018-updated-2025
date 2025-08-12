@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.logging.*;
-public final class NumberDisplayer {
-    private static final Logger LOGGER = Logger.getLogger(NumberDisplayer.class.getName());
+public final class CRNumberDisplayer {
+    private static final Logger LOGGER = Logger.getLogger(CRNumberDisplayer.class.getName());
     public static void main(String[] args) {
         // Setup logger
         LOGGER.setLevel(Level.INFO);

@@ -1,6 +1,6 @@
 import java.util.logging.*;
-public final class LongCheck {
-    private static final Logger LOGGER = Logger.getLogger(LongCheck.class.getName());
+public final class CRLongCheck {
+    private static final Logger LOGGER = Logger.getLogger(CRLongCheck.class.getName());
     public static void main(String[] args) {
         // Setup logger
         LOGGER.setLevel(Level.INFO);

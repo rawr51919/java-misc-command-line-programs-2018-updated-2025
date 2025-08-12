@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.logging.*;
-public final class SignedInttoUnsignedIntConverter {
-    private static final Logger LOGGER = Logger.getLogger(SignedInttoUnsignedIntConverter.class.getName());
+public final class CRSignedInttoUnsignedIntConverter {
+    private static final Logger LOGGER = Logger.getLogger(CRSignedInttoUnsignedIntConverter.class.getName());
     public static void main(String[] args) {
         // Configure logger
         LOGGER.setLevel(Level.INFO);

@@ -2,8 +2,8 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.ConsoleHandler;
-public final class Meep {
-    private static final Logger logger = Logger.getLogger(Meep.class.getName());
+public final class CRMeep {
+    private static final Logger logger = Logger.getLogger(CRMeep.class.getName());
     public static final void main(String[] args) {
         // Setup logger to output to console immediately
         logger.setLevel(Level.INFO);

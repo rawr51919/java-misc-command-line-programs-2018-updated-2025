@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.logging.*;
-public final class ReverseString {
-    private static final Logger LOGGER = Logger.getLogger(ReverseString.class.getName());
+public final class CRReverseString {
+    private static final Logger LOGGER = Logger.getLogger(CRReverseString.class.getName());
     public static void main(String[] args) {
         // Setup logger
         LOGGER.setLevel(Level.INFO);

@@ -1,0 +1,132 @@
+name: Build and Release JARs
+
+on:
+  push:
+    branches:
+      - main
+
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Set to "main" for full release; else pre-release'
+        required: false
+        default: ''
+
+permissions:
+  contents: write   # needed to create releases
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    outputs:
+      jars: ${{ steps.set-jars.outputs.jars }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Set up JDK 24
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 24
+
+      # Prepare output directory
+      - name: Prepare output directory
+        run: mkdir -p out
+
+      # Build each Java file separately
+      - name: Compile and package each Java file
+        run: |
+          set -e
+          mkdir -p out
+
+          # List of Java files to build
+          files=(
+            CRAlgorithmCheck
+            CRCountTo1Million
+            CRForceCRC32
+            CRIntCheck
+            CRLongCheck
+            CRMeep
+            CRNumberDisplayer
+            CRReverseString
+            CRRNG
+            CRScreaming
+            CRScreaming2
+            CRSignedInttoUnsignedIntConverter
+            CRStringLengthIdentifier
+            CRStringReverser1
+            CRStringReverser2
+            CRStringReverser3
+            CRStringReverser4
+          )
+
+          for file in "${files[@]}"; do
+            echo "Building $file.jar"
+
+            mkdir -p out/$file/classes
+
+            if [ "$file" = "CRForceCRC32" ]; then
+              # Adjust libs path as needed; assumes dependency jars in libs/
+              javac -cp "libs/*" -d out/$file/classes "$file.java"
+              jar cfe "out/$file.jar" "$file" -C out/$file/classes .
+            else
+              javac -d out/$file/classes "$file.java"
+              jar cfe "out/$file.jar" "$file" -C out/$file/classes .
+            fi
+          done
+
+      # Set output for next jobs
+      - name: Set output JAR list
+        id: set-jars
+        run: |
+          echo "jars=$(ls out/*.jar | xargs -n1 basename | tr '\n' ' ')" >> $GITHUB_OUTPUT
+
+      # Upload all built jars as artifacts
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: jar-files
+          path: out/*.jar
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v5
+        with:
+          name: jar-files
+          path: ./jars
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          prerelease: ${{ github.event.inputs.release_type != 'main' }}
+          files: |
+            jars/CRAlgorithmCheck.jar
+            jars/CRCountTo1Million.jar
+            jars/CRForceCRC32.jar
+            jars/CRIntCheck.jar
+            jars/CRLongCheck.jar
+            jars/CRMeep.jar
+            jars/CRNumberDisplayer.jar
+            jars/CRReverseString.jar
+            jars/CRRNG.jar
+            jars/CRScreaming.jar
+            jars/CRScreaming2.jar
+            jars/CRSignedInttoUnsignedIntConverter.jar
+            jars/CRStringLengthIdentifier.jar
+            jars/CRStringReverser1.jar
+            jars/CRStringReverser2.jar
+            jars/CRStringReverser3.jar
+            jars/CRStringReverser4.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

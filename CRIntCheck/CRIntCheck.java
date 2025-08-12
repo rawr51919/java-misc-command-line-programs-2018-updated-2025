@@ -1,6 +1,6 @@
 import java.util.logging.*;
-public final class IntCheck {
-    private static final Logger LOGGER = Logger.getLogger(IntCheck.class.getName());
+public final class CRIntCheck {
+    private static final Logger LOGGER = Logger.getLogger(CRIntCheck.class.getName());
     public static void main(String[] args) {
         // Setup logger
         LOGGER.setLevel(Level.INFO);

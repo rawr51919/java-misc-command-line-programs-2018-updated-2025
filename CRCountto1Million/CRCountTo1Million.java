@@ -1,8 +1,8 @@
 import java.util.logging.*;
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
-public final class CountTo1Million {
-    private static final Logger LOGGER = Logger.getLogger(CountTo1Million.class.getName());
+public final class CRCountTo1Million {
+    private static final Logger LOGGER = Logger.getLogger(CRCountTo1Million.class.getName());
     public static void main(String[] args) {
         setupLogger();
         try (PrintWriter numbers = new PrintWriter("break1mil.txt")) {

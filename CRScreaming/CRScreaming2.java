@@ -1,7 +1,7 @@
 import java.io.IOException;
 import java.util.logging.*;
-public final class Screaming2 {
-    private static final Logger LOGGER = Logger.getLogger(Screaming2.class.getName());
+public final class CRScreaming2 {
+    private static final Logger LOGGER = Logger.getLogger(CRScreaming2.class.getName());
     public static void main(String[] args) throws IOException {
         // Setup console handler with custom formatter (no metadata, no newline)
         ConsoleHandler consoleHandler = new ConsoleHandler();
