@@ -183,22 +183,22 @@ jobs:
           tag_name: build-${{ github.run_number }}
           prerelease: ${{ github.event.inputs.release_type != 'main' }}
           files: |
-            CRAlgorithmCheck.jar
-            CRCountTo1Million.jar
-            CRForceCRC32.jar
-            CRIntCheck.jar
-            CRLongCheck.jar
-            CRMeep.jar
-            CRNumberDisplayer.jar
-            CRReverseString.jar
-            CRRNG.jar
-            CRScreaming.jar
-            CRScreaming2.jar
-            CRSignedInttoUnsignedIntConverter.jar
-            CRStringLengthIdentifier.jar
-            CRStringReverser1.jar
-            CRStringReverser2.jar
-            CRStringReverser3.jar
-            CRStringReverser4.jar
+            jars/CRAlgorithmCheck.jar
+            jars/CRCountTo1Million.jar
+            jars/CRForceCRC32.jar
+            jars/CRIntCheck.jar
+            jars/CRLongCheck.jar
+            jars/CRMeep.jar
+            jars/CRNumberDisplayer.jar
+            jars/CRReverseString.jar
+            jars/CRRNG.jar
+            jars/CRScreaming.jar
+            jars/CRScreaming2.jar
+            jars/CRSignedInttoUnsignedIntConverter.jar
+            jars/CRStringLengthIdentifier.jar
+            jars/CRStringReverser1.jar
+            jars/CRStringReverser2.jar
+            jars/CRStringReverser3.jar
+            jars/CRStringReverser4.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
