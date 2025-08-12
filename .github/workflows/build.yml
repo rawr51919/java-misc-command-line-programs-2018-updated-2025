@@ -32,64 +32,136 @@ jobs:
           distribution: temurin
           java-version: 24
 
-      # Prepare output directory
-      - name: Prepare output directory
-        run: mkdir -p out
-
-      # Build each Java file separately
-      - name: Compile and package each Java file
+      - name: Compile and package CRAlgorithmCheck
         run: |
-          set -e
-          mkdir -p out
+          mkdir -p out/CRAlgorithmCheck
+          javac CRAlgorithmCheck/CRAlgorithmCheck.java -d out/CRAlgorithmCheck
+          jar cfe CRAlgorithmCheck.jar CRAlgorithmCheck -C out/CRAlgorithmCheck .
 
-          # List of Java files to build
-          files=(
-            CRAlgorithmCheck
-            CRCountTo1Million
-            CRForceCRC32
-            CRIntCheck
-            CRLongCheck
-            CRMeep
-            CRNumberDisplayer
-            CRReverseString
-            CRRNG
-            CRScreaming
-            CRScreaming2
-            CRSignedInttoUnsignedIntConverter
-            CRStringLengthIdentifier
-            CRStringReverser1
-            CRStringReverser2
-            CRStringReverser3
-            CRStringReverser4
-          )
+      - name: Compile and package CRCountTo1Million
+        run: |
+          mkdir -p out/CRCountTo1Million
+          javac CRCountTo1Million/CRCountTo1Million.java -d out/CRCountTo1Million
+          jar cfe CRCountTo1Million.jar CRCountTo1Million -C out/CRCountTo1Million .
 
-          for file in "${files[@]}"; do
-            echo "Building $file.jar"
+      - name: Compile and package CRForceCRC32
+        run: |
+          mkdir -p out/CRForceCRC32
+          shopt -s globstar
+          javac CRForceCRC32/**/*.java -d out/CRForceCRC32
+          jar cfe CRForceCRC32.jar CRForceCRC32 -C out/CRForceCRC32 .
 
-            mkdir -p out/$file/classes
+      - name: Compile and package CRIntCheck
+        run: |
+          mkdir -p out/CRIntCheck
+          javac CRIntCheck/CRIntCheck.java -d out/CRIntCheck
+          jar cfe CRIntCheck.jar CRIntCheck -C out/CRIntCheck .
 
-            if [ "$file" = "CRForceCRC32" ]; then
-              # Adjust libs path as needed; assumes dependency jars in libs/
-              javac -cp "libs/*" -d out/$file/classes "$file.java"
-              jar cfe "out/$file.jar" "$file" -C out/$file/classes .
-            else
-              javac -d out/$file/classes "$file.java"
-              jar cfe "out/$file.jar" "$file" -C out/$file/classes .
-            fi
-          done
+      - name: Compile and package CRLongCheck
+        run: |
+          mkdir -p out/CRLongCheck
+          javac CRLongCheck/CRLongCheck.java -d out/CRLongCheck
+          jar cfe CRLongCheck.jar CRLongCheck -C out/CRLongCheck .
 
-      # Set output for next jobs
+      - name: Compile and package CRMeep
+        run: |
+          mkdir -p out/CRMeep
+          javac CRMeep/CRMeep.java -d out/CRMeep
+          jar cfe CRMeep.jar CRMeep -C out/CRMeep .
+
+      - name: Compile and package CRNumberDisplayer
+        run: |
+          mkdir -p out/CRNumberDisplayer
+          javac CRNumberDisplayer/CRNumberDisplayer.java -d out/CRNumberDisplayer
+          jar cfe CRNumberDisplayer.jar CRNumberDisplayer -C out/CRNumberDisplayer .
+
+      - name: Compile and package CRReverseString
+        run: |
+          mkdir -p out/CRReverseString
+          javac CRReverseString/CRReverseString.java -d out/CRReverseString
+          jar cfe CRReverseString.jar CRReverseString -C out/CRReverseString .
+
+      - name: Compile and package CRRNG
+        run: |
+          mkdir -p out/CRRNG
+          javac CRRNG/CRRNG.java -d out/CRRNG
+          jar cfe CRRNG.jar CRRNG -C out/CRRNG .
+
+      - name: Compile and package CRScreaming
+        run: |
+          mkdir -p out/CRScreaming
+          javac CRScreaming/CRScreaming.java -d out/CRScreaming
+          jar cfe CRScreaming.jar CRScreaming -C out/CRScreaming .
+
+      - name: Compile and package CRScreaming2
+        run: |
+          mkdir -p out/CRScreaming2
+          javac CRScreaming2/CRScreaming2.java -d out/CRScreaming2
+          jar cfe CRScreaming2.jar CRScreaming2 -C out/CRScreaming2 .
+
+      - name: Compile and package CRSignedInttoUnsignedIntConverter
+        run: |
+          mkdir -p out/CRSignedInttoUnsignedIntConverter
+          javac CRSignedInttoUnsignedIntConverter/CRSignedInttoUnsignedIntConverter.java -d out/CRSignedInttoUnsignedIntConverter
+          jar cfe CRSignedInttoUnsignedIntConverter.jar CRSignedInttoUnsignedIntConverter -C out/CRSignedInttoUnsignedIntConverter .
+
+      - name: Compile and package CRStringLengthIdentifier
+        run: |
+          mkdir -p out/CRStringLengthIdentifier
+          javac CRStringLengthIdentifier/CRStringLengthIdentifier.java -d out/CRStringLengthIdentifier
+          jar cfe CRStringLengthIdentifier.jar CRStringLengthIdentifier -C out/CRStringLengthIdentifier .
+
+      - name: Compile and package CRStringReverser1
+        run: |
+          mkdir -p out/CRStringReverser1
+          javac CRStringReverser1/CRStringReverser1.java -d out/CRStringReverser1
+          jar cfe CRStringReverser1.jar CRStringReverser1 -C out/CRStringReverser1 .
+
+      - name: Compile and package CRStringReverser2
+        run: |
+          mkdir -p out/CRStringReverser2
+          javac CRStringReverser2/CRStringReverser2.java -d out/CRStringReverser2
+          jar cfe CRStringReverser2.jar CRStringReverser2 -C out/CRStringReverser2 .
+
+      - name: Compile and package CRStringReverser3
+        run: |
+          mkdir -p out/CRStringReverser3
+          javac CRStringReverser3/CRStringReverser3.java -d out/CRStringReverser3
+          jar cfe CRStringReverser3.jar CRStringReverser3 -C out/CRStringReverser3 .
+
+      - name: Compile and package CRStringReverser4
+        run: |
+          mkdir -p out/CRStringReverser4
+          javac CRStringReverser4/CRStringReverser4.java -d out/CRStringReverser4
+          jar cfe CRStringReverser4.jar CRStringReverser4 -C out/CRStringReverser4 .
+
       - name: Set output JAR list
         id: set-jars
         run: |
-          echo "jars=$(ls out/*.jar | xargs -n1 basename | tr '\n' ' ')" >> $GITHUB_OUTPUT
+          echo "jars=CRAlgorithmCheck.jar CRCountTo1Million.jar CRForceCRC32.jar CRIntCheck.jar CRLongCheck.jar CRMeep.jar CRNumberDisplayer.jar CRReverseString.jar CRRNG.jar CRScreaming.jar CRScreaming2.jar CRSignedInttoUnsignedIntConverter.jar CRStringLengthIdentifier.jar CRStringReverser1.jar CRStringReverser2.jar CRStringReverser3.jar CRStringReverser4.jar" >> $GITHUB_OUTPUT
 
-      # Upload all built jars as artifacts
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: jar-files
-          path: out/*.jar
+          path: |
+            CRAlgorithmCheck.jar
+            CRCountTo1Million.jar
+            CRForceCRC32.jar
+            CRIntCheck.jar
+            CRLongCheck.jar
+            CRMeep.jar
+            CRNumberDisplayer.jar
+            CRReverseString.jar
+            CRRNG.jar
+            CRScreaming.jar
+            CRScreaming2.jar
+            CRSignedInttoUnsignedIntConverter.jar
+            CRStringLengthIdentifier.jar
+            CRStringReverser1.jar
+            CRStringReverser2.jar
+            CRStringReverser3.jar
+            CRStringReverser4.jar
 
   release:
     needs: build
@@ -111,22 +183,22 @@ jobs:
           tag_name: build-${{ github.run_number }}
           prerelease: ${{ github.event.inputs.release_type != 'main' }}
           files: |
-            jars/CRAlgorithmCheck.jar
-            jars/CRCountTo1Million.jar
-            jars/CRForceCRC32.jar
-            jars/CRIntCheck.jar
-            jars/CRLongCheck.jar
-            jars/CRMeep.jar
-            jars/CRNumberDisplayer.jar
-            jars/CRReverseString.jar
-            jars/CRRNG.jar
-            jars/CRScreaming.jar
-            jars/CRScreaming2.jar
-            jars/CRSignedInttoUnsignedIntConverter.jar
-            jars/CRStringLengthIdentifier.jar
-            jars/CRStringReverser1.jar
-            jars/CRStringReverser2.jar
-            jars/CRStringReverser3.jar
-            jars/CRStringReverser4.jar
+            CRAlgorithmCheck.jar
+            CRCountTo1Million.jar
+            CRForceCRC32.jar
+            CRIntCheck.jar
+            CRLongCheck.jar
+            CRMeep.jar
+            CRNumberDisplayer.jar
+            CRReverseString.jar
+            CRRNG.jar
+            CRScreaming.jar
+            CRScreaming2.jar
+            CRSignedInttoUnsignedIntConverter.jar
+            CRStringLengthIdentifier.jar
+            CRStringReverser1.jar
+            CRStringReverser2.jar
+            CRStringReverser3.jar
+            CRStringReverser4.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
