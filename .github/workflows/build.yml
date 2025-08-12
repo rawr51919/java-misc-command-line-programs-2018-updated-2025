@@ -114,25 +114,25 @@ jobs:
       - name: Compile and package CRStringReverser1
         run: |
           mkdir -p out/CRStringReverser1
-          javac CRStringReverser1/CRStringReverser1.java -d out/CRStringReverser1
+          javac CRStringReversers/CRStringReverser1.java -d out/CRStringReverser1
           jar cfe CRStringReverser1.jar CRStringReverser1 -C out/CRStringReverser1 .
 
       - name: Compile and package CRStringReverser2
         run: |
           mkdir -p out/CRStringReverser2
-          javac CRStringReverser2/CRStringReverser2.java -d out/CRStringReverser2
+          javac CRStringReversers/CRStringReverser2.java -d out/CRStringReverser2
           jar cfe CRStringReverser2.jar CRStringReverser2 -C out/CRStringReverser2 .
 
       - name: Compile and package CRStringReverser3
         run: |
           mkdir -p out/CRStringReverser3
-          javac CRStringReverser3/CRStringReverser3.java -d out/CRStringReverser3
+          javac CRStringReversers/CRStringReverser3.java -d out/CRStringReverser3
           jar cfe CRStringReverser3.jar CRStringReverser3 -C out/CRStringReverser3 .
 
       - name: Compile and package CRStringReverser4
         run: |
           mkdir -p out/CRStringReverser4
-          javac CRStringReverser4/CRStringReverser4.java -d out/CRStringReverser4
+          javac CRStringReversers/CRStringReverser4.java -d out/CRStringReverser4
           jar cfe CRStringReverser4.jar CRStringReverser4 -C out/CRStringReverser4 .
 
       - name: Set output JAR list
