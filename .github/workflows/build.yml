@@ -96,7 +96,7 @@ jobs:
       - name: Compile and package CRScreaming2
         run: |
           mkdir -p out/CRScreaming2
-          javac CRScreaming2/CRScreaming2.java -d out/CRScreaming2
+          javac CRScreaming/CRScreaming2.java -d out/CRScreaming2
           jar cfe CRScreaming2.jar CRScreaming2 -C out/CRScreaming2 .
 
       - name: Compile and package CRSignedInttoUnsignedIntConverter
