@@ -141,7 +141,7 @@ jobs:
           echo "jars=CRAlgorithmCheck.jar CRCountTo1Million.jar CRForceCRC32.jar CRIntCheck.jar CRLongCheck.jar CRMeep.jar CRNumberDisplayer.jar CRReverseString.jar CRRNG.jar CRScreaming.jar CRScreaming2.jar CRSignedInttoUnsignedIntConverter.jar CRStringLengthIdentifier.jar CRStringReverser1.jar CRStringReverser2.jar CRStringReverser3.jar CRStringReverser4.jar" >> $GITHUB_OUTPUT
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: jar-files
           path: |
@@ -172,7 +172,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: jar-files
           path: ./jars
